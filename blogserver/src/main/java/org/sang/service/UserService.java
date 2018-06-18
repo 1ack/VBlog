@@ -21,10 +21,14 @@ import java.util.List;
 @Service
 @Transactional
 public class UserService implements UserDetailsService {
-    @Autowired
-    UserMapper userMapper;
+    final UserMapper userMapper;
     @Autowired
     RolesMapper rolesMapper;
+
+    @Autowired
+    public UserService(UserMapper userMapper) {
+        this.userMapper = userMapper;
+    }
 
     @Override
     public UserDetails loadUserByUsername(String s) throws UsernameNotFoundException {
